@@ -17,7 +17,7 @@
 
 // + 1. Создаю разметку
 // + 2. Зарендерить разметку в готовый список в html
-import gallerryPicture from "./gallery-items.js";
+import gallerryPicture from "./gallery-items.js"; //импортировал с файла gallery-items - массив с ссылками на фото
 
 const refs = {
     gallery: document.querySelector(".js-gallery"),
