@@ -17,13 +17,19 @@
 
 // 1. Создаю разметку
 // 2. Зарендерить разметку в готовый список в html
-
-
-// const galleryRef = document.querySelector(".js-gallery");
-
 import gallerryPicture from "./gallery-items.js";
 
+const refs = {
+    gallery: document.querySelector(".js-gallery"),
+    lightbox: document.querySelector(".js-lightbox"),
+    lightboxImg: document.querySelector(".lightbox__image"),
+    lightboxOverlay: document.querySelector(".lightbox__overlay"),
+    lightboxCloseBtn: document.querySelector('button[data-action="close-lightbox"]'),
+}
 
+
+const galleryMarkup = createGallery(gallerryPicture);
+refs.gallery.insertAdjacentHTML('beforeend', galleryMarkup)
 
 function createGallery(items)
 {
