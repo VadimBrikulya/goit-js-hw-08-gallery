@@ -15,8 +15,8 @@
 // окне клавишами "влево" и "вправо".
 
 
-// 1. Создаю разметку
-// 2. Зарендерить разметку в готовый список в html
+// + 1. Создаю разметку
+// + 2. Зарендерить разметку в готовый список в html
 import gallerryPicture from "./gallery-items.js";
 
 const refs = {
@@ -26,7 +26,6 @@ const refs = {
     lightboxOverlay: document.querySelector(".lightbox__overlay"),
     lightboxCloseBtn: document.querySelector('button[data-action="close-lightbox"]'),
 }
-
 
 const galleryMarkup = createGallery(gallerryPicture);
 refs.gallery.insertAdjacentHTML('beforeend', galleryMarkup)
@@ -50,7 +49,7 @@ function createGallery(items)
 </li> `}).join('');
     
 }
-console.log(createGallery(gallerryPicture))
+// console.log(createGallery(gallerryPicture))
     
     
 
