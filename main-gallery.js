@@ -38,6 +38,9 @@ function isOpenPicture(e) {
     refs.lightbox.classList.add('is-open');
     refs.lightboxImg.src = e.target.dataset.source;
     refs.lightboxImg.alt = e.target.alt;
+    // window.addEventListener('keydown', onKeyPressEsc);
+    // window.addEventListener('keydown', onKeyPressArrowLeft);
+    // window.addEventListener('keydown', onKeyPressArrowRight);
 };
 
 
@@ -50,7 +53,8 @@ function isClosePictureBtn(e) {
         return;
     }    
     refs.lightbox.classList.remove('is-open');
-    
+    refs.lightboxImg.src = '';
+    refs.lightboxImg.alt = '';
 }
 
 
