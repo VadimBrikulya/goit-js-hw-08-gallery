@@ -25,10 +25,17 @@ const refs = {
     lightboxImg: document.querySelector(".lightbox__image"),
     lightboxOverlay: document.querySelector(".lightbox__overlay"),
     lightboxCloseBtn: document.querySelector('button[data-action="close-lightbox"]'),
-}
+};
 
 const galleryMarkup = createGallery(gallerryPicture);
-refs.gallery.insertAdjacentHTML('beforeend', galleryMarkup)
+refs.gallery.insertAdjacentHTML('beforeend', galleryMarkup);
+
+refs.gallery.addEventListener('click', onModalOpen);
+refs.lightbox.addEventListener('click', changeLi);
+refs.lightbox.addEventListener('click', onModalClose);
+
+
+
 
 function createGallery(items)
 {
@@ -52,4 +59,9 @@ function createGallery(items)
 // console.log(createGallery(gallerryPicture))
     
     
+//Коллбек для слушателя открытия модалки
 
+function onModalOpen(e) {
+
+    
+}
