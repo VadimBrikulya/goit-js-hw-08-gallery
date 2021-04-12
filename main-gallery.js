@@ -17,7 +17,7 @@
 
 // + 1. Создаю разметку
 // + 2. Зарендерить разметку в готовый список в html
-import gallerryPicture from "./gallery-items.js"; //импортировал с файла gallery-items - массив с ссылками на фото
+import galleryPicture from "./gallery-items.js"; //импортировал с файла gallery-items - массив с ссылками на фото
 
 const refs = {
     gallery: document.querySelector(".js-gallery"),
@@ -27,19 +27,16 @@ const refs = {
     lightboxCloseBtn: document.querySelector('button[data-action="close-lightbox"]'),
 };
 
-const galleryMarkup = createGallery(gallerryPicture);
+const galleryMarkup = createGallery(galleryPicture);
 refs.gallery.insertAdjacentHTML('beforeend', galleryMarkup);
 
 refs.gallery.addEventListener('click', onModalOpen);
-refs.lightbox.addEventListener('click', changeLi);
-refs.lightbox.addEventListener('click', onModalClose);
+//refs.lightbox.addEventListener('click', changelightboxImage);
+//refs.lightbox.addEventListener('click', onModalClose);
 
-
-
-
-function createGallery(items)
+function createGallery()
 {
-    return gallerryPicture.map(({ preview, original, description }) => {
+    return galleryPicture.map(({ preview, original, description }) => {
         return `
      <li class="gallery__item">
         <a
@@ -55,13 +52,14 @@ function createGallery(items)
         </a>
 </li> `}).join('');
     
-}
-// console.log(createGallery(gallerryPicture))
-    
-    
-//Коллбек для слушателя открытия модалки
+};
+        
+//Коллбек открытия модалки
 
 function onModalOpen(e) {
-
-    
-}
+    const isLinkOnPicture = e.target.classList.contains('gallery__link');
+    if (!isLinkOnPicture) {
+        return;
+    }
+    console.log(e.target);
+};
