@@ -27,26 +27,30 @@ const refs = {
     lightboxCloseBtn: document.querySelector('button[data-action="close-lightbox"]'),
 };
 
-refs.gallery.addEventListener('click', onOpenPicture);
-function onOpenPicture(e) {
-    event.preventDefault();
-    const isPictureClick = e.target.dataset.source
-    if (!isPictureClick) {
+refs.gallery.addEventListener('click', isOpenPicture);
+
+function isOpenPicture(e) {
+    e.preventDefault();
+    const onPictureClick = e.target.dataset.source
+    if (!onPictureClick) {
         return;
     }
     refs.lightbox.classList.add('is-open');
-    // const lightboxImgOriginal = e.target.dataset.source;
+    refs.lightboxImg.src = e.target.dataset.source;
+    refs.lightboxImg.alt = e.target.alt;
 };
 
-refs.lightbox.addEventListener('click', onClosePicture);
 
-function onClosePicture(e) {
-    event.preventDefault();
-    const isPictureClick = e.target.dataset.action
-    if (!isPictureClick) {
+
+refs.lightbox.addEventListener('click', isClosePictureBtn);
+function isClosePictureBtn(e) {
+    e.preventDefault();
+    const isPictureCloseClick = e.target.dataset.action
+    if (!isPictureCloseClick) {
         return;
     }    
-    refs.lightbox.classList.remove('is-open');    
+    refs.lightbox.classList.remove('is-open');
+    
 }
 
 
