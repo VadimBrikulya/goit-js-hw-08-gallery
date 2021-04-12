@@ -27,15 +27,23 @@ const refs = {
     lightboxCloseBtn: document.querySelector('button[data-action="close-lightbox"]'),
 };
 
-const galleryMarkup = createGallery(galleryPicture);
+refs.gallery.addEventListener('click', onOpenPicture);
+function onOpenPicture(e) {
+    event.preventDefault();
+    const isPictureClick = e.target.dataset.source
+    if (!isPictureClick) {
+        return;
+}
+
+    console.log(e.target);
+    
+}
+
+// ============================================================================
+const galleryMarkup = createGallery('galleryPicture');
 refs.gallery.insertAdjacentHTML('beforeend', galleryMarkup);
 
-refs.gallery.addEventListener('click', onModalOpen);
-//refs.lightbox.addEventListener('click', changelightboxImage);
-//refs.lightbox.addEventListener('click', onModalClose);
-
-function createGallery()
-{
+function createGallery(){    
     return galleryPicture.map(({ preview, original, description }) => {
         return `
      <li class="gallery__item">
@@ -50,16 +58,10 @@ function createGallery()
                 alt="${description}"
                 />
         </a>
-</li> `}).join('');
-    
+</li> `}).join('');    
 };
-        
+// ============================================================================
+
+
 //Коллбек открытия модалки
 
-function onModalOpen(e) {
-    const isLinkOnPicture = e.target.classList.contains('gallery__link');
-    if (!isLinkOnPicture) {
-        return;
-    }
-    console.log(e.target);
-};
