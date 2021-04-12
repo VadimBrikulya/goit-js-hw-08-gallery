@@ -57,8 +57,6 @@ function isClosePictureBtn(e) {
     refs.lightboxImg.alt = '';
 }
 
-
-
 // ============================================================================
 const galleryMarkup = createGallery('galleryPicture');
 refs.gallery.insertAdjacentHTML('beforeend', galleryMarkup);
@@ -82,6 +80,4 @@ function createGallery(){
 };
 // ============================================================================
 
-
-//Коллбек открытия модалки
 
