@@ -34,8 +34,14 @@ function onOpenPicture(e) {
     if (!isPictureClick) {
         return;}
     refs.lightbox.classList.add('is-open');    
-    
 }
+refs.lightbox.addEventListener('click', onClosePicture);
+
+function onClosePicture(e) {
+    refs.lightbox.classList.remove('is-open');    
+}
+
+
 
 // ============================================================================
 const galleryMarkup = createGallery('galleryPicture');
