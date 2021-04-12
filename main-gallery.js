@@ -32,10 +32,8 @@ function onOpenPicture(e) {
     event.preventDefault();
     const isPictureClick = e.target.dataset.source
     if (!isPictureClick) {
-        return;
-}
-
-    console.log(e.target);
+        return;}
+    refs.lightbox.classList.add('is-open');    
     
 }
 
