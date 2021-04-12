@@ -32,12 +32,20 @@ function onOpenPicture(e) {
     event.preventDefault();
     const isPictureClick = e.target.dataset.source
     if (!isPictureClick) {
-        return;}
-    refs.lightbox.classList.add('is-open');    
-}
+        return;
+    }
+    refs.lightbox.classList.add('is-open');
+    // const lightboxImgOriginal = e.target.dataset.source;
+};
+
 refs.lightbox.addEventListener('click', onClosePicture);
 
 function onClosePicture(e) {
+    event.preventDefault();
+    const isPictureClick = e.target.dataset.action
+    if (!isPictureClick) {
+        return;
+    }    
     refs.lightbox.classList.remove('is-open');    
 }
 
