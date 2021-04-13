@@ -15,7 +15,7 @@
 // окне клавишами "влево" и "вправо".
 
 
-//импортировал с файла gallery-items - массив с ссылками на фото
+//импортировал с файла gallery-items - список с ссылками на фото
 import galleryPicture from "./gallery-items.js"; 
 
 const refs = {
@@ -59,11 +59,10 @@ function isOpenPicture(e) {
     refs.lightbox.classList.add('is-open');
     refs.lightboxImg.src = e.target.dataset.source;
     refs.lightboxImg.alt = e.target.alt;
-    // window.addEventListener('keydown', onKeyPressEsc);
+    window.addEventListener('keydown', onEscKeyPress);
     // window.addEventListener('keydown', onKeyPressArrowLeft);
     // window.addEventListener('keydown', onKeyPressArrowRight);
 };
-
 
 //Закрытие модалки путем клика на кнопку "закрыть"
 refs.lightbox.addEventListener('click', isClosePictureBtn);
@@ -88,10 +87,13 @@ function onBackdrop(e) {
     refs.lightbox.classList.remove('is-open');
     refs.lightboxImg.src = '';
     refs.lightboxImg.alt = '';
-
+    window.removeEventListener('keydown', onEscKeyPress);
 }
 
-
+//Закрытие модалки путем нажатия на "Escape"
+function onEscKeyPress(e) {
+    onBackdrop(e);
+}
 
 
 
