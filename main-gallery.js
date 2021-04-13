@@ -47,7 +47,6 @@ function createGallery(){
 </li> `}).join('');    
 };
 
-
 //Открытие модалки путем клика на картинку
 refs.gallery.addEventListener('click', isOpenPicture);
 function isOpenPicture(e) {
@@ -76,12 +75,11 @@ function onKeyPressArrowLeft(e) {
     if (currentSrc === 0 && currentAlt === 0) {
       currentSrc = src.length;
       currentAlt = alt.length;
-    }
-
+    };
     refs.lightboxImg.src = src[currentSrc - 1];
     refs.lightboxImg.alt = alt[currentAlt - 1];
-  }
-}
+  };
+};
 function onKeyPressArrowRight(e) {
   if (e.code === 'ArrowRight') {
     const src = galleryPicture.map(({ original }) => original);
@@ -96,11 +94,8 @@ function onKeyPressArrowRight(e) {
     }
     refs.lightboxImg.src = src[currentSrc + 1];
     refs.lightboxImg.alt = alt[currentAlt + 1];
-  }
-}
-
-
-
+  };
+};
 
 //Закрытие модалки путем клика на кнопку "закрыть"
 refs.lightbox.addEventListener('click', isClosePictureBtn);
@@ -115,6 +110,7 @@ function isClosePictureBtn(e) {
     refs.lightboxImg.alt = '';
     window.removeEventListener('keydown', onEscKeyPress);
 };
+
 //Закрытие модалки путем клика на бекдроп
 refs.lightboxOverlay.addEventListener('click', onBackdropClick);
 function onBackdropClick(e) {
