@@ -60,9 +60,28 @@ function isOpenPicture(e) {
     refs.lightboxImg.src = e.target.dataset.source;
     refs.lightboxImg.alt = e.target.alt;
     window.addEventListener('keydown', onEscKeyPress);
-    // window.addEventListener('keydown', onKeyPressArrowLeft);
+    // window.addEventListener('keydown', onKey);
     // window.addEventListener('keydown', onKeyPressArrowRight);
 };
+
+//Пролистывание картинок
+// function onKey(e) {
+    
+//     let currentIndex = 1;
+//       if (e.code === 'ArrowLeft') {
+//           currentIndex -=1;
+//     }
+//       else if (e.code === 'ArrowLeft') {
+//           currentIndex +=1          
+//         }
+//     setModalImage(currentIndex)
+//     };
+
+// function setModalImage(index) {
+//     console.log(refs.gallery.indexOf[index])
+// }
+
+
 
 //Закрытие модалки путем клика на кнопку "закрыть"
 refs.lightbox.addEventListener('click', isClosePictureBtn);
@@ -96,10 +115,8 @@ function onEscKeyPress(e) {
     console.log(e.code);
     if (e.code === 'Escape') {
         onBackdropClick(e);
-    }    
-}
-
-
+    };
+};
 
 
 
