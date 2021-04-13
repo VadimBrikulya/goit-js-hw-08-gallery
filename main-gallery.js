@@ -75,10 +75,11 @@ function isClosePictureBtn(e) {
     refs.lightbox.classList.remove('is-open');
     refs.lightboxImg.src = '';
     refs.lightboxImg.alt = '';
+    window.removeEventListener('keydown', onEscKeyPress);
 };
 //Закрытие модалки путем клика на бекдроп
-refs.lightboxOverlay.addEventListener('click', onBackdrop);
-function onBackdrop(e) {
+refs.lightboxOverlay.addEventListener('click', onBackdropClick);
+function onBackdropClick(e) {
      e.preventDefault();
     const isClickBackdrop = e.target;
     if (!isClickBackdrop) {
@@ -92,7 +93,10 @@ function onBackdrop(e) {
 
 //Закрытие модалки путем нажатия на "Escape"
 function onEscKeyPress(e) {
-    onBackdrop(e);
+    console.log(e.code);
+    if (e.code === 'Escape') {
+        onBackdropClick(e);
+    }    
 }
 
 
