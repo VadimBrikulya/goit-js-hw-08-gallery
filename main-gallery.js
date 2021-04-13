@@ -31,7 +31,7 @@ refs.gallery.addEventListener('click', isOpenPicture);
 
 function isOpenPicture(e) {
     e.preventDefault();
-    const onPictureClick = e.target.dataset.source
+    const onPictureClick = e.target.dataset.source;
     if (!onPictureClick) {
         return;
     }
@@ -48,14 +48,31 @@ function isOpenPicture(e) {
 refs.lightbox.addEventListener('click', isClosePictureBtn);
 function isClosePictureBtn(e) {
     e.preventDefault();
-    const isPictureCloseClick = e.target.dataset.action
+    const isPictureCloseClick = e.target.dataset.action;
     if (!isPictureCloseClick) {
         return;
     }    
     refs.lightbox.classList.remove('is-open');
     refs.lightboxImg.src = '';
     refs.lightboxImg.alt = '';
+};
+
+refs.lightboxOverlay.addEventListener('click', onBackdrop);
+function onBackdrop(e) {
+     e.preventDefault();
+    const isClickBackdrop = e.target;
+    if (!isClickBackdrop) {
+        return;
+    }
+    refs.lightbox.classList.remove('is-open');
+    refs.lightboxImg.src = '';
+    refs.lightboxImg.alt = '';
+
 }
+
+
+
+
 
 // ============================================================================
 const galleryMarkup = createGallery('galleryPicture');
