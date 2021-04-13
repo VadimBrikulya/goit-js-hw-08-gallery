@@ -60,26 +60,45 @@ function isOpenPicture(e) {
     refs.lightboxImg.src = e.target.dataset.source;
     refs.lightboxImg.alt = e.target.alt;
     window.addEventListener('keydown', onEscKeyPress);
-    // window.addEventListener('keydown', onKey);
-    // window.addEventListener('keydown', onKeyPressArrowRight);
+    window.addEventListener('keydown', onKeyPressArrowLeft);
+    window.addEventListener('keydown', onKeyPressArrowRight);
 };
 
 //Пролистывание картинок
-// function onKey(e) {
-    
-//     let currentIndex = 1;
-//       if (e.code === 'ArrowLeft') {
-//           currentIndex -=1;
-//     }
-//       else if (e.code === 'ArrowLeft') {
-//           currentIndex +=1          
-//         }
-//     setModalImage(currentIndex)
-//     };
+function onKeyPressArrowLeft(e) {
+  if (e.code === 'ArrowLeft') {
+    const src = galleryPicture.map(({ original }) => original);
+    const alt = galleryPicture.map(({ description }) => description);
 
-// function setModalImage(index) {
-//     console.log(refs.gallery.indexOf[index])
-// }
+    let currentSrc = src.indexOf(refs.lightboxImg.src);
+    let currentAlt = alt.indexOf(refs.lightboxImg.alt);
+
+    if (currentSrc === 0 && currentAlt === 0) {
+      currentSrc = src.length;
+      currentAlt = alt.length;
+    }
+
+    refs.lightboxImg.src = src[currentSrc - 1];
+    refs.lightboxImg.alt = alt[currentAlt - 1];
+  }
+}
+function onKeyPressArrowRight(e) {
+  if (e.code === 'ArrowRight') {
+    const src = galleryPicture.map(({ original }) => original);
+    const alt = galleryPicture.map(({ description }) => description);
+
+    let currentSrc = src.indexOf(refs.lightboxImg.src);
+    let currentAlt = alt.indexOf(refs.lightboxImg.alt);
+
+    if (currentSrc + 1 > src.length - 1 && currentAlt + 1 > alt.length - 1) {
+      currentSrc = -1;
+      currentAlt = -1;
+    }
+    refs.lightboxImg.src = src[currentSrc + 1];
+    refs.lightboxImg.alt = alt[currentAlt + 1];
+  }
+}
+
 
 
 
