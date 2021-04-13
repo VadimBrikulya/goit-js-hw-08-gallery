@@ -15,9 +15,8 @@
 // окне клавишами "влево" и "вправо".
 
 
-// + 1. Создаю разметку
-// + 2. Зарендерить разметку в готовый список в html
-import galleryPicture from "./gallery-items.js"; //импортировал с файла gallery-items - массив с ссылками на фото
+//импортировал с файла gallery-items - массив с ссылками на фото
+import galleryPicture from "./gallery-items.js"; 
 
 const refs = {
     gallery: document.querySelector(".js-gallery"),
@@ -26,55 +25,7 @@ const refs = {
     lightboxOverlay: document.querySelector(".lightbox__overlay"),
     lightboxCloseBtn: document.querySelector('button[data-action="close-lightbox"]'),
 };
-
-refs.gallery.addEventListener('click', isOpenPicture);
-
-function isOpenPicture(e) {
-    e.preventDefault();
-    const onPictureClick = e.target.dataset.source;
-    if (!onPictureClick) {
-        return;
-    }
-    refs.lightbox.classList.add('is-open');
-    refs.lightboxImg.src = e.target.dataset.source;
-    refs.lightboxImg.alt = e.target.alt;
-    // window.addEventListener('keydown', onKeyPressEsc);
-    // window.addEventListener('keydown', onKeyPressArrowLeft);
-    // window.addEventListener('keydown', onKeyPressArrowRight);
-};
-
-
-
-refs.lightbox.addEventListener('click', isClosePictureBtn);
-function isClosePictureBtn(e) {
-    e.preventDefault();
-    const isPictureCloseClick = e.target.dataset.action;
-    if (!isPictureCloseClick) {
-        return;
-    }    
-    refs.lightbox.classList.remove('is-open');
-    refs.lightboxImg.src = '';
-    refs.lightboxImg.alt = '';
-};
-
-refs.lightboxOverlay.addEventListener('click', onBackdrop);
-function onBackdrop(e) {
-     e.preventDefault();
-    const isClickBackdrop = e.target;
-    if (!isClickBackdrop) {
-        return;
-    }
-    refs.lightbox.classList.remove('is-open');
-    refs.lightboxImg.src = '';
-    refs.lightboxImg.alt = '';
-
-}
-
-
-
-
-
-// ============================================================================
+// Добавление и рендеринг элементов в список class="gallery"
 const galleryMarkup = createGallery('galleryPicture');
 refs.gallery.insertAdjacentHTML('beforeend', galleryMarkup);
 
@@ -95,6 +46,55 @@ function createGallery(){
         </a>
 </li> `}).join('');    
 };
-// ============================================================================
+
+
+//Открытие модалки путем клика на картинку
+refs.gallery.addEventListener('click', isOpenPicture);
+function isOpenPicture(e) {
+    e.preventDefault();
+    const onPictureClick = e.target.dataset.source;
+    if (!onPictureClick) {
+        return;
+    }
+    refs.lightbox.classList.add('is-open');
+    refs.lightboxImg.src = e.target.dataset.source;
+    refs.lightboxImg.alt = e.target.alt;
+    // window.addEventListener('keydown', onKeyPressEsc);
+    // window.addEventListener('keydown', onKeyPressArrowLeft);
+    // window.addEventListener('keydown', onKeyPressArrowRight);
+};
+
+
+//Закрытие модалки путем клика на кнопку "закрыть"
+refs.lightbox.addEventListener('click', isClosePictureBtn);
+function isClosePictureBtn(e) {
+    e.preventDefault();
+    const isPictureCloseClick = e.target.dataset.action;
+    if (!isPictureCloseClick) {
+        return;
+    }    
+    refs.lightbox.classList.remove('is-open');
+    refs.lightboxImg.src = '';
+    refs.lightboxImg.alt = '';
+};
+//Закрытие модалки путем клика на бекдроп
+refs.lightboxOverlay.addEventListener('click', onBackdrop);
+function onBackdrop(e) {
+     e.preventDefault();
+    const isClickBackdrop = e.target;
+    if (!isClickBackdrop) {
+        return;
+    }
+    refs.lightbox.classList.remove('is-open');
+    refs.lightboxImg.src = '';
+    refs.lightboxImg.alt = '';
+
+}
+
+
+
+
+
+
 
 
